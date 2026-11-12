@@ -1,0 +1,65 @@
+{
+    "port": "Auto-Detect",
+    "baud_rate": 115200,
+    "dead_zone": 0.18,
+    "speed": 62.0,
+    "calibrated_center_x": 1812.04,
+    "calibrated_center_y": 1805.28,
+    "auto_reconnect": true,
+    "invert_x": true,
+    "invert_y": false,
+    "joystick_left": {
+        "action": "Volume Down",
+        "key": "",
+        "cmd": ""
+    },
+    "joystick_right": {
+        "action": "Volume Up",
+        "key": "",
+        "cmd": ""
+    },
+    "joystick_up": {
+        "action": "Brightness Up",
+        "key": "",
+        "cmd": ""
+    },
+    "joystick_down": {
+        "action": "Brightness Down",
+        "key": "",
+        "cmd": ""
+    },
+    "joystick_click": {
+        "action": "Mute / Unmute Volume",
+        "key": "mute",
+        "cmd": "mute"
+    },
+    "buttons": {
+        "1": {
+            "name": "Button 1",
+            "action": "Custom Hotkey",
+            "key": "win+e",
+            "cmd": "win+e"
+        },
+        "2": {
+            "name": "Button 2",
+            "action": "Custom Hotkey",
+            "key": "ctrl+v",
+            "cmd": "ctrl+v"
+        },
+        "3": {
+            "name": "Button 3",
+            "action": "Custom Hotkey",
+            "key": "win+tab",
+            "cmd": "win+tab"
+        },
+        "4": {
+            "name": "Button 4",
+            "action": "Custom Hotkey",
+            "key": "win+shift+s",
+            "cmd": "win+shift+s"
+        }
+    },
+    "unlock_password": "0330",
+    "unlock_button": "joystick_double",
+    "start_minimized": false
+}

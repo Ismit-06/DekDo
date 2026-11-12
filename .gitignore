@@ -1,0 +1,20 @@
+# Python / PyInstaller build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.spec
+build/
+dist/
+
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Executable binaries (build outputs)
+*.exe
+*.pkg
+
+# Temporary and local user files
+scratch/
+*.log
