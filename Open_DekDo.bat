@@ -1,4 +1,4 @@
 @echo off
-cd /d "%~dp0"
-start "" "%~dp0DekDo.exe"
+cd /d "%~dp0software"
+start "" "%~dp0software\DekDo.exe"
 exit

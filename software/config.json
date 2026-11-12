@@ -37,8 +37,8 @@
         "1": {
             "name": "Button 1",
             "action": "Custom Hotkey",
-            "key": "win+e",
-            "cmd": "win+e"
+            "key": "ctrl+c",
+            "cmd": "ctrl+c"
         },
         "2": {
             "name": "Button 2",
