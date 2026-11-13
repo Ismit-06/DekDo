@@ -1580,17 +1580,17 @@ class MainWindow(QMainWindow):
         )
 
 if __name__ == "__main__":
-    import ctypes
-    user32 = ctypes.windll.user32
-    WINDOW_TITLE = "DekDo - Hardware Command Suite"
+    IPC_SERVER_NAME = "DekDo_SingleInstance_IPC_v1"
 
-    # Single-instance enforcement via system mutex to prevent multiple background instances from locking COM port
-    mutex = win32event.CreateMutex(None, False, "Global\\DekDo_SingleInstance_App_Mutex_v2")
-    if win32api.GetLastError() == winerror.ERROR_ALREADY_EXISTS:
-        existing_hwnd = user32.FindWindowW(None, WINDOW_TITLE)
-        if existing_hwnd:
-            user32.ShowWindow(existing_hwnd, 9)  # SW_RESTORE
-            user32.SetForegroundWindow(existing_hwnd)
+    # Quick IPC check to see if another instance is already running
+    test_socket = QLocalSocket()
+    test_socket.connectToServer(IPC_SERVER_NAME)
+    if test_socket.waitForConnected(300):
+        if "--minimized" not in sys.argv:
+            # Tell the existing instance to reveal its window
+            test_socket.write(b"SHOW\n")
+            test_socket.waitForBytesWritten(300)
+        test_socket.disconnectFromServer()
         sys.exit(0)
 
     app = QApplication(sys.argv)
@@ -1598,6 +1598,23 @@ if __name__ == "__main__":
     app.setQuitOnLastWindowClosed(False)
 
     window = MainWindow()
+
+    # Start local IPC server so subsequent launches can bring this window to focus
+    ipc_server = QLocalServer()
+    # Remove any stale pipe if previous process crashed
+    QLocalServer.removeServer(IPC_SERVER_NAME)
+    if ipc_server.listen(IPC_SERVER_NAME):
+        def handle_new_connection():
+            client = ipc_server.nextPendingConnection()
+            if client:
+                def read_cmd():
+                    data = bytes(client.readAll()).decode("utf-8", errors="ignore")
+                    if "SHOW" in data:
+                        window.showNormal()
+                        window.activateWindow()
+                        window.raise_()
+                client.readyRead.connect(read_cmd)
+        ipc_server.newConnection.connect(handle_new_connection)
 
     # If launched with --minimized (e.g. from Windows Startup), stay in tray silently
     if "--minimized" in sys.argv:

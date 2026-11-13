@@ -1,12 +1,12 @@
 {
     "port": "Auto-Detect",
     "baud_rate": 115200,
-    "dead_zone": 0.18,
-    "speed": 62.0,
-    "calibrated_center_x": 1812.04,
-    "calibrated_center_y": 1805.28,
+    "dead_zone": 0.15,
+    "speed": 40.0,
+    "calibrated_center_x": 1795.0,
+    "calibrated_center_y": 1805.0,
     "auto_reconnect": true,
-    "invert_x": true,
+    "invert_x": false,
     "invert_y": false,
     "joystick_left": {
         "action": "Volume Down",
@@ -30,36 +30,35 @@
     },
     "joystick_click": {
         "action": "Mute / Unmute Volume",
-        "key": "mute",
-        "cmd": "mute"
+        "key": "",
+        "cmd": ""
     },
     "buttons": {
         "1": {
             "name": "Button 1",
-            "action": "Custom Hotkey",
-            "key": "ctrl+c",
-            "cmd": "ctrl+c"
+            "action": "Unlock Laptop (Type Password)",
+            "key": "",
+            "cmd": ""
         },
         "2": {
             "name": "Button 2",
             "action": "Custom Hotkey",
-            "key": "ctrl+v",
-            "cmd": "ctrl+v"
+            "key": "win+shift+s",
+            "cmd": "win+shift+s"
         },
         "3": {
             "name": "Button 3",
             "action": "Custom Hotkey",
-            "key": "win+tab",
-            "cmd": "win+tab"
+            "key": "ctrl+c",
+            "cmd": "ctrl+c"
         },
         "4": {
             "name": "Button 4",
             "action": "Custom Hotkey",
-            "key": "win+shift+s",
-            "cmd": "win+shift+s"
+            "key": "ctrl+v",
+            "cmd": "ctrl+v"
         }
     },
-    "unlock_password": "0330",
-    "unlock_button": "joystick_double",
-    "start_minimized": false
+    "unlock_password": "",
+    "unlock_button": "1"
 }
