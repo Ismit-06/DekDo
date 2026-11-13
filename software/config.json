@@ -36,27 +36,27 @@
     "buttons": {
         "1": {
             "name": "Button 1",
-            "action": "Unlock Laptop (Type Password)",
-            "key": "",
-            "cmd": ""
-        },
-        "2": {
-            "name": "Button 2",
-            "action": "Custom Hotkey",
-            "key": "win+shift+s",
-            "cmd": "win+shift+s"
-        },
-        "3": {
-            "name": "Button 3",
             "action": "Custom Hotkey",
             "key": "ctrl+c",
             "cmd": "ctrl+c"
         },
-        "4": {
-            "name": "Button 4",
+        "2": {
+            "name": "Button 2",
             "action": "Custom Hotkey",
             "key": "ctrl+v",
             "cmd": "ctrl+v"
+        },
+        "3": {
+            "name": "Button 3",
+            "action": "Custom Hotkey",
+            "key": "win+shift+s",
+            "cmd": "win+shift+s"
+        },
+        "4": {
+            "name": "Button 4",
+            "action": "Custom Hotkey",
+            "key": "win+tab",
+            "cmd": "win+tab"
         }
     },
     "unlock_password": "",

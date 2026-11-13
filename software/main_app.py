@@ -1603,17 +1603,20 @@ if __name__ == "__main__":
     ipc_server = QLocalServer()
     # Remove any stale pipe if previous process crashed
     QLocalServer.removeServer(IPC_SERVER_NAME)
+    ipc_clients = []
     if ipc_server.listen(IPC_SERVER_NAME):
         def handle_new_connection():
             client = ipc_server.nextPendingConnection()
             if client:
-                def read_cmd():
-                    data = bytes(client.readAll()).decode("utf-8", errors="ignore")
+                ipc_clients.append(client)
+                def read_cmd(c=client):
+                    data = bytes(c.readAll()).decode("utf-8", errors="ignore")
                     if "SHOW" in data:
                         window.showNormal()
                         window.activateWindow()
                         window.raise_()
-                client.readyRead.connect(read_cmd)
+                c.readyRead.connect(read_cmd)
+                c.disconnected.connect(lambda c=client: ipc_clients.remove(c) if c in ipc_clients else None)
         ipc_server.newConnection.connect(handle_new_connection)
 
     # If launched with --minimized (e.g. from Windows Startup), stay in tray silently
